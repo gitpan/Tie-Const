@@ -1,0 +1,482 @@
+.rn '' }`
+''' $RCSfile$$Revision$$Date$
+'''
+''' $Log$
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
+'''   \*(L" and \*(R", except that they are used on ".xx" lines,
+'''   such as .IP and .SH, which do another additional levels of
+'''   double-quote interpretation
+.ds M" """
+.ds S" """
+.ds N" """""
+.ds T" """""
+.ds L' '
+.ds R' '
+.ds M' '
+.ds S' '
+.ds N' '
+.ds T' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds M" ``
+.ds S" ''
+.ds N" ``
+.ds T" ''
+.ds L' `
+.ds R' '
+.ds M' `
+.ds S' '
+.ds N' `
+.ds T' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH Const 3pm "perl 5.004, patch 04" "9/Sep/99" "User Contributed Perl Documentation"
+.UC
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+Tie::Const \- Perl module to provide constant scalars and hashes.
+.SH "SYNOPSIS"
+.PP
+.Vb 1
+\&    use Tie::Const ; # Imports const.
+.Ve
+.Vb 1
+\&    const my $SCALAR1 => 10 ;
+.Ve
+.Vb 2
+\&    
+\&    use Tie::Const qw( const reconst unconst ) ; # Or "use Tie::Const ':ALL' ;"
+.Ve
+.Vb 3
+\&    const my $SCALAR2 => "Hello" ; # Note the =>, NOT =.
+\&    
+\&    const my $SCALAR3 => 42 ;
+.Ve
+.Vb 1
+\&    const $SCALAR4    => $SCALAR3 ;
+.Ve
+.Vb 1
+\&    reconst $SCALAR4  => 57 ;
+.Ve
+.Vb 1
+\&    unconst $SCALAR4 ;
+.Ve
+We can't use \*(L"my\*(R" to declare constant hashes directly so do the my first.
+.PP
+.Vb 2
+\&    my %HASH1 ;
+\&    const \e%HASH1   => \e%HASH2 ; # Note that the first must be a reference.
+.Ve
+.Vb 3
+\&    my( %HASH3, %HASH4 ) ;
+\&    const \e%HASH3   => ( a => 1, b => 2, c => 3 ) ; # Can pass literal hash
+\&    const \e%HASH4   => { a => 1, b => 2, c => 3 } ; # or hash ref.
+.Ve
+.Vb 3
+\&    reconst \e%HASH4 => ( %HASH4, d => 4, e => 5 ) ;
+\&    
+\&    unconst \e%HASH4 ;
+.Ve
+.SH "DESCRIPTION"
+.Sh "Constant Scalars"
+.PP
+.Vb 1
+\&    use Tie::Const ':ALL' ; # or "use Tie::Const qw( const reconst unconst ) ;"
+.Ve
+.Vb 1
+\&    const my $CONSTANT => "Hello" ;
+.Ve
+.Vb 1
+\&    my $var = $CONSTANT . "\en" ;
+.Ve
+.Vb 3
+\&    my $val = $hash{$CONSTANT} ;
+\&    
+\&    print "$CONSTANT World" ;
+.Ve
+Constants declared with \f(CWconst\fR look and behave like ordinary variables
+and can be used anywhere a variable is used except that you can't
+overwrite them. (You can however redefine them with \f(CWreconst\fR, or turn
+them back into ordinary variables again with \f(CWunconst\fR.)
+.PP
+.Vb 1
+\&    use Tie::Const qw( const reconst unconst ) ;
+.Ve
+Create a new scalar variable.
+.PP
+.Vb 1
+\&    my $SCALAR = "Hello" ;   
+.Ve
+We can modify it anytime.
+.PP
+.Vb 1
+\&    $SCALAR .= " World" ;
+.Ve
+Make that scalar variable a constant, assigning it a value.
+.PP
+.Vb 1
+\&    const $SCALAR => $SCALAR ;
+.Ve
+Any attempt to overwrite \f(CW$SCALAR\fR's value will result in a trappable
+(with eval) runtime error, so from here on in we are guaranteed that
+no-one can change \f(CW$SCALAR\fR's value.
+.PP
+However, why merely embrace the definition of const that applies in
+other computer languages when we can do so much more in Perl? It may be
+that we want a variable to be constant most of the time, but in certain
+circumstances we would like it to be changed. We can redefine its value
+using \f(CWreconst\fR.
+.PP
+.Vb 1
+\&    reconst $SCALAR => $SCALAR . "!\en" ;
+.Ve
+\f(CW$SCALAR\fR is \fIstill\fR read-only, but now it has a new constant value.
+.PP
+It may occur however that we have reached a point where we want it to be
+an ordinary variable after all. There are two ways of achieving that.
+One way is to use \f(CWunconst\fR.
+.PP
+.Vb 1
+\&    unconst $SCALAR ;
+.Ve
+\f(CW$SCALAR\fR is now an ordinary variable again, and its value is the value
+it held when it was made \f(CWconst\fR, or last \f(CWreconst\fR'ed. If you don't
+want to preserve the value you can untie it instead.
+.PP
+.Vb 1
+\&    untie $SCALAR ; # Works now but deprecated so don't rely on it.
+.Ve
+The value that \f(CW$SCALAR\fR holds now is the last value assigned to it
+before it was made \f(CWconst\fR which could be \f(CWundef\fR if it was defined
+and declared at the same time. \fBDo not rely on this behaviour\fR; you
+should assume that an untie'd const must be redefined before reusing it.
+.PP
+Thus in subroutines where we would normally write:
+.PP
+.Vb 1
+\&    my $value = shift ;
+.Ve
+or similar, we can now write
+.PP
+.Vb 1
+\&    const my $value = shift ;
+.Ve
+to make it clear we only want to read the value not write to it.
+.Sh "Constant Hashes"
+.PP
+.Vb 1
+\&    use Tie::Const qw( const reconst unconst ) ;
+.Ve
+Create a new hash variable.
+.PP
+.Vb 1
+\&    my %HASH ;
+.Ve
+Make that variable a constant and assign to it.
+.PP
+.Vb 1
+\&    const \e%HASH => ( cyan => 4, magenta => 5, yellow => 6, black => 7 ) ;
+.Ve
+Any attempt to overwrite any of \f(CW%HASH\fR's values or to clear \f(CW%HASH\fR
+itself will result in a trappable (with eval) runtime error, so from
+here on in we are guaranteed that no-one can change \f(CW%HASH\fR or its
+values. Unless we \f(CWreconst\fR it of course.
+.PP
+.Vb 1
+\&    reconst \e%HASH => ( %HASH, red => 1, green => 2, blue => 3 ) ;
+.Ve
+\f(CW%HASH\fR is \fIstill\fR read-only, but now it has new constant values.
+.PP
+We can \f(CWunconst\fR a hash just like a scalar.
+.PP
+.Vb 1
+\&    unconst \e%HASH ;
+.Ve
+\f(CW%HASH\fR is now an ordinary variable again, and its values are the values
+it held when it was made \f(CWconst\fR, or last \f(CWreconst\fR'ed.
+If you don't want to preserve the values you can untie it instead. (This
+is more efficient.)
+.PP
+.Vb 1
+\&    untie %HASH ; # Works now but deprecated so don't rely on it.
+.Ve
+.Sh "Constant elements of \fInon-const\fR hashes"
+Individual elements of non-const hashes can be made constant. They can be
+\f(CWreconst\fR'ed and \f(CWunconst\fR'ed too of course. \fBBut beware that if the
+non-const hash is cleared the const(s) will be lost along with it! Also const
+hash elements can be deleted.\fR
+.PP
+\fBWarning:\fR const hash elements can be deleted by \f(CW%HASH = ()\fR and by
+\f(CWdelete $HASH{$KEY}\fR.
+.PP
+.Vb 1
+\&    const $HASH{$KEY}    => "hash" ;
+.Ve
+.SH "WHY ANOTHER CONSTANT MODULE?"
+Although Perl is my favourite programming language I find it annoying
+that constants are not a built-in part of the language. For non-trivial 
+programs I feel that constants are a real help. Hopefully one day 
+they'll be part of the core language \- maybe using the syntax offered 
+here?
+.PP
+You can of course declare constants like this:
+.PP
+.Vb 1
+\&    sub CONSTANT () { "Constant" }
+.Ve
+I am not keen on this approach because to get the values of your constants you
+have to write them in one of several different ways depending on the context.
+For example if I want to use the constant that I've just declared above in an
+expression I can use it like this:
+.PP
+.Vb 1
+\&    my $var = CONSTANT . "\en" ;
+.Ve
+This looks nice for C programmers. But if I want to use it as a hash key
+I must use one of the following approaches so that it isn't treated as
+the bareword \f(CWCONSTANT\fR and converted by perl into the literal
+\f(CW"CONSTANT"\fR:
+.PP
+.Vb 2
+\&    my $key = $hash{CONSTANT()} ;
+\&    my $key = $hash{&CONSTANT} ;
+.Ve
+And if I want to print the constant I have to use yet another syntax:
+.PP
+.Vb 1
+\&    print "@{[CONSTANT]}\en"
+.Ve
+I wanted to be able to define a constant in such a way that I can use it
+in any context that a variable can appear using a single syntax. Hence I
+wrote this module.
+.Sh "\s-1EXAMPLES\s0"
+(See \s-1DESCRIPTION\s0.)
+.SH "BUGS"
+Perl has a few built-in hashes, e.g. \f(CW@ARGV\fR, \f(CW%ENV\fR, and many built-in
+scalars, e.g. \f(CW$_\fR.
+.PP
+\fBI would not recommend applying \fR\f(CWconst\fR
+\fB to any built-in scalar or hash with the possible exception of \f(CW%ENV\fR!\fR
+.PP
+The only built-in hash which it might be sensible to apply \f(CWconst\fR to
+is \f(CW%ENV\fR; who knows it might even make a script slightly more secure
+in some cases?
+.PP
+.Vb 1
+\&    const \e%ENV => \e%ENV ; # This seems OK.
+.Ve
+You can even apply \f(CWconst\fR to particular keys of a \fInon-const\fR hash.
+.PP
+.Vb 1
+\&    const $ENV{PATH} => '/usr/bin:/usr/local/bin' ;
+.Ve
+Arrays are not included because support for tied arrays in Perl 5.004 is too
+incomplete.
+.PP
+Hashes also have some problems: if a non-const hash is cleared any const
+scalars in the non-const hash will be lost along with it! Also const hash
+elements can be deleted.
+.SH "CHANGES"
+1998/6/18   First release.
+.PP
+1998/6/25   First public release.
+.PP
+1999/01/18  Second public release. Arrays dropped: too incomplete.
+.PP
+1999/07/29  Third release. Minor changes.
+.PP
+1999/07/30  No effective changes. Corrections for CPAN and automatic testing.
+.PP
+1999/08/08  Changed licence to LGPL.
+.PP
+1999/09/09  Renamed package Tie::Const.pm as per John Porter's (CPAN) suggestion.
+.SH "AUTHOR"
+Mark Summerfield. I can be contacted as <summer@chest.ac.uk> \-
+please include the word \*(L'const\*(R' in the subject line.
+.SH "COPYRIGHT"
+Copyright (c) Mark Summerfield 1998/9. All Rights Reserved.
+.PP
+This module may be used/distributed/modified under the LGPL.
+
+.rn }` ''
+.IX Title "Const 3pm"
+.IX Name "Tie::Const - Perl module to provide constant scalars and hashes."
+
+.IX Header "NAME"
+
+.IX Header "SYNOPSIS"
+
+.IX Header "DESCRIPTION"
+
+.IX Subsection "Constant Scalars"
+
+.IX Subsection "Constant Hashes"
+
+.IX Subsection "Constant elements of \fInon-const\fR hashes"
+
+.IX Header "WHY ANOTHER CONSTANT MODULE?"
+
+.IX Subsection "\s-1EXAMPLES\s0"
+
+.IX Header "BUGS"
+
+.IX Header "CHANGES"
+
+.IX Header "AUTHOR"
+
+.IX Header "COPYRIGHT"
+
